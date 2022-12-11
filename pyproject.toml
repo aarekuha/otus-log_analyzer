@@ -2,13 +2,13 @@
 name = "log-analyzer"
 version = "0.1.0"
 description = ""
-authors = ["rekukha.aa <aleksandr.rekukha@domru.ru>"]
+authors = ["rekukha.aa <aarekuha@gmail.com>"]
 readme = "README.md"
 packages = [{include = "log_analyzer"}]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-
+flake8 = "6.0.0"
 
 [build-system]
 requires = ["poetry-core", "flake8"]
