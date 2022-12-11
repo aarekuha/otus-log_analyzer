@@ -76,7 +76,7 @@ def get_config(default_config: dict) -> dict:
 
 
 def get_logger(_config: dict) -> logging.Logger:
-    filename: Union[str,  None] = None
+    filename: Union[str, None] = None
     if _config.get("LOG_FILENAME", None):
         filename = _config["LOG_FILENAME"]
 
