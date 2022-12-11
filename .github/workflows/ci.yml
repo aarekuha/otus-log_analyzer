@@ -17,7 +17,7 @@ jobs:
           python-version: 3.7
 
       - name: Install Poetry
-        uses: dschep/install-poetry-action@v1.2.0a1
+        uses: dschep/install-poetry-action@v1.3
 
       - name: Code Quality
         run: poetry run black . --check
