@@ -16,10 +16,10 @@
     "REPORT_SIZE": 10
     "REPORT_DIR": "./reports",
     "INVALID_PATTERN_LIMIT_PERC": 0.3,
-    "BATCH_LINES_COUNT": 10_000,
+    "BATCH_LINES_COUNT": 10000,
     "REPORT_PLACEHOLDER": "$table_json",
     "REPORT_TEMPLATE_FILENAME": "template/report.html",
-    "FILENAME_TEMPLATE": r"nginx-access-ui.log-\d{8}.(gz|txt)",
+    "FILENAME_TEMPLATE": "nginx-access-ui.log-\d{8}.(gz|txt)",
 }
 ```
 |Имя настройки|Описание|
