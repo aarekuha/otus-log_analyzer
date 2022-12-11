@@ -35,10 +35,6 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
 
-      - name: Install requirements
-        run: |
-          pip install flake8
-
       - name: Code Quality
         run: |
           poetry run flake8
