@@ -17,7 +17,9 @@ jobs:
           python-version: 3.8
 
       - name: Install Poetry
-        uses: dschep/install-poetry-action@v1.3
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.2.2
 
       - name: Code Quality
         run: poetry run black . --check
