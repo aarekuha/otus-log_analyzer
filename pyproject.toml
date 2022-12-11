@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "log_analyzer"}]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 flake8 = "6.0.0"
 
 [build-system]
