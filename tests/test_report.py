@@ -56,11 +56,20 @@ class TestReport(unittest.TestCase):
 
     def test_get_date_from_src_filename(self) -> None:
         self._report._src_filename = "filename20221212.txt"
-        self.assertEqual(self._report._get_date_from_src_filename(), "2022.12.12")
+        self.assertEqual(
+            self._report._get_date_from_src_filename(),
+            "2022.12.12"
+        )
         self._report._src_filename = "filename20221213.gz"
-        self.assertEqual(self._report._get_date_from_src_filename(), "2022.12.13")
+        self.assertEqual(
+            self._report._get_date_from_src_filename(),
+            "2022.12.13"
+        )
         self._report._src_filename = "filename20241212.tar.gz"
-        self.assertEqual(self._report._get_date_from_src_filename(), "2024.12.12")
+        self.assertEqual(
+            self._report._get_date_from_src_filename(),
+            "2024.12.12"
+        )
 
     def test_get_report_name(self) -> None:
         self._report._reports_dir = "test_dir"
