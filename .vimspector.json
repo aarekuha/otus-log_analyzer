@@ -1,0 +1,29 @@
+{
+  "configurations": {
+    "Python": {
+      "adapter": "debugpy",
+      "configuration": {
+        "python": "${workspaceRoot}/venv/bin/python",
+        "request": "launch",
+        "program": "log_analyzer.py",
+        "stopOnEntry": false,
+        "cwd": "${workspaceRoot}",
+        "showReturnValue": true
+      }
+    },
+    "Python Attach": {
+      "adapter": "multi-session",
+      "configuration": {
+        "request": "attach",
+        "port": 5678,
+        "host": "localhost",
+        "breakpoints": {
+          "exception": {
+              "cpp_throw": "Y",
+              "cpp_catch": "Y"
+            }
+        }
+      }
+    }
+  }
+}

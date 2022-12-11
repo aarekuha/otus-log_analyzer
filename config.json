@@ -1,0 +1,5 @@
+{
+    "LOG_DIR": "./src_logs",
+    "LOG_FILENAME": "./logs/my_log.log",
+    "REPORT_SIZE": 10
+}
