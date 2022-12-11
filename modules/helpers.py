@@ -3,6 +3,7 @@ import re
 import json
 import argparse
 import logging
+from typing import Union
 
 
 def is_valid_filename(filename: str, filename_template: str) -> bool:
@@ -32,7 +33,7 @@ def get_src_log_filename(
     path: str,
     filename_template: str,
     logger: logging.Logger,
-) -> str | None:
+) -> Union[str, None]:
     """Путь к исходному файлу логов"""
     if not os.path.exists(path):
         message: str = f"Указан неправильный каталог к исходным логам: {path}"
@@ -75,7 +76,7 @@ def get_config(default_config: dict) -> dict:
 
 
 def get_logger(_config: dict) -> logging.Logger:
-    filename: str | None = None
+    filename: Union[str,  None] = None
     if _config.get("LOG_FILENAME", None):
         filename = _config["LOG_FILENAME"]
 
