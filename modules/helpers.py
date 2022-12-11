@@ -6,17 +6,19 @@ import logging
 
 
 def is_valid_filename(filename: str, filename_template: str) -> bool:
-    """ Проверка имени файла на соответствие требованиям именования """
+    """Проверка имени файла на соответствие требованиям именования"""
     is_match_pattern: bool = bool(re.match(filename_template, filename))
     return is_match_pattern
 
 
 def get_last_file_name(folder: str, filename_template: str) -> str:
-    """ Поиск имени файла с самой поздней датой """
+    """Поиск имени файла с самой поздней датой"""
     newest_filename: str = ""
     for filename in [
-        f for f in os.listdir(folder)
-        if os.path.isfile(f"{folder}/{f}") and is_valid_filename(
+        f
+        for f in os.listdir(folder)
+        if os.path.isfile(f"{folder}/{f}")
+        and is_valid_filename(
             filename=f,
             filename_template=filename_template,
         )
@@ -31,7 +33,7 @@ def get_src_log_filename(
     filename_template: str,
     logger: logging.Logger,
 ) -> str | None:
-    """ Путь к исходному файлу логов """
+    """Путь к исходному файлу логов"""
     if not os.path.exists(path):
         message: str = f"Указан неправильный каталог к исходным логам: {path}"
         logger.exception(message, exc_info=False)
@@ -53,7 +55,7 @@ def get_config(default_config: dict) -> dict:
     """
     parser: argparse.ArgumentParser = argparse.ArgumentParser()
     parser.add_argument(
-        '--config',
+        "--config",
         default="config.json",
         help="json config filename",
     )

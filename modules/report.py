@@ -60,9 +60,9 @@ class Report:
         return str(self._items)
 
     def calculate(self) -> Report:
-        """ Формирование отсортированного, посчитанного объема """
+        """Формирование отсортированного, посчитанного объема"""
         total_count: int = 0
-        total_time: float = 0.
+        total_time: float = 0.0
         for item in self._items.values():
             item.calculate()
             total_count += item.count
@@ -73,7 +73,7 @@ class Report:
                 self._items.items(),
                 key=lambda item: item[1],
                 reverse=True,
-                )
+            )
         )
         self._logger.debug("Calculate slice of items by time_sum...")
         for item in self._items.values():
@@ -83,18 +83,16 @@ class Report:
         return self
 
     def having(self, count_gt: int = None) -> dict[str, ReportItem]:
-        """ Срез данных, количество вызовов которых превышает count_gt """
+        """Срез данных, количество вызовов которых превышает count_gt"""
         items: dict[str, ReportItem] = {}
         if count_gt:
             items = {
-                key: item
-                for key, item in self._items.items()
-                if item.count > count_gt
+                key: item for key, item in self._items.items() if item.count > count_gt
             }
         return items
 
     def _get_report_name(self) -> str:
-        """ Формирование имени файла-отчета """
+        """Формирование имени файла-отчета"""
         report_date: str = self._get_date_from_src_filename()
         report_filename: str = f"{self._reports_dir}/report-{report_date}.html"
         return report_filename
@@ -110,7 +108,7 @@ class Report:
         return f"[{','.join(result)}]"
 
     def save(self, size: int) -> None:
-        """ Сохранение подготовленных данныхв файл-шаблон """
+        """Сохранение подготовленных данныхв файл-шаблон"""
         # Сбор данных из шаблона отчета
         filename_template: str = self._config["REPORT_TEMPLATE_FILENAME"]
         template_data: str = Path(filename_template).read_text()
@@ -143,5 +141,5 @@ class Report:
         return dst_date
 
     def is_report_exists(self) -> bool:
-        """ Проверка на присутствие ранее обработанного файла-отчета """
+        """Проверка на присутствие ранее обработанного файла-отчета"""
         return os.path.exists(self._get_report_name())

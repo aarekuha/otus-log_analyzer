@@ -33,9 +33,9 @@ class ReportItem:
 
         return ReportItem(
             count=1,
-            count_perc=0.,
+            count_perc=0.0,
             time_sum=request_time,
-            time_perc=0.,
+            time_perc=0.0,
             time_avg=0,
             time_max=request_time,
             time_med=0,
@@ -48,7 +48,7 @@ class ReportItem:
         try:
             float_value = float(src_value)
         except ValueError:
-            float_value = 0.
+            float_value = 0.0
         return float_value
 
     def append(self, line_attrs: LineAttrs) -> ReportItem:
@@ -61,7 +61,7 @@ class ReportItem:
         return self
 
     def calculate(self) -> ReportItem:
-        """ Подготовка значений по всем собранным сведениям запроса """
+        """Подготовка значений по всем собранным сведениям запроса"""
         self.time_avg = sum(self.times) / self.count
         self.time_max = max(self.times)
         self.time_med = statistics.median(self.times)
@@ -71,9 +71,11 @@ class ReportItem:
         return self.time_sum > other.time_sum
 
     def __str__(self) -> str:
-        """ Преобразование в строку, которая будет подставлена в отчет """
-        return ",".join([
-            f'"{key}":{self.__getattribute__(key)}'
-            for key in self.__annotations__.keys()
-            if key not in ["times", "request"]
-        ])
+        """Преобразование в строку, которая будет подставлена в отчет"""
+        return ",".join(
+            [
+                f'"{key}":{self.__getattribute__(key)}'
+                for key in self.__annotations__.keys()
+                if key not in ["times", "request"]
+            ]
+        )

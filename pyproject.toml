@@ -9,7 +9,8 @@ packages = [{include = "log_analyzer"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 flake8 = "6.0.0"
+black = "^22.12.0"
 
 [build-system]
-requires = ["poetry-core", "flake8"]
+requires = ["poetry-core", "flake8", "black"]
 build-backend = "poetry.core.masonry.api"

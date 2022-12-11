@@ -9,11 +9,12 @@ from modules.line_attrs import LineAttrs
 class TestReport(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls._example_line: str = \
-            '1.196.116.32 -  - [29/Jun/2017:03:50:22 +0300] ' \
-            '"GET /api/v2/banner/25019354 HTTP/1.1" 200 927 "-" ' \
-            '"Lynx/2.8.8dev.9 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/2.10.5" ' \
+        cls._example_line: str = (
+            "1.196.116.32 -  - [29/Jun/2017:03:50:22 +0300] "
+            '"GET /api/v2/banner/25019354 HTTP/1.1" 200 927 "-" '
+            '"Lynx/2.8.8dev.9 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/2.10.5" '
             '"-" "1498697422-2190034393-4708-9752759" "dc7161be3" 0.390'
+        )
         cls._example_line_attrs = LineAttrs(text_line=cls._example_line)
         cls._report_item = ReportItem.from_line_attrs(
             line_attrs=cls._example_line_attrs,
@@ -55,29 +56,19 @@ class TestReport(unittest.TestCase):
 
     def test_get_date_from_src_filename(self) -> None:
         self._report._src_filename = "filename20221212.txt"
-        self.assertEqual(
-            self._report._get_date_from_src_filename(),
-            "2022.12.12"
-        )
+        self.assertEqual(self._report._get_date_from_src_filename(), "2022.12.12")
         self._report._src_filename = "filename20221213.gz"
-        self.assertEqual(
-            self._report._get_date_from_src_filename(),
-            "2022.12.13"
-        )
+        self.assertEqual(self._report._get_date_from_src_filename(), "2022.12.13")
         self._report._src_filename = "filename20241212.tar.gz"
-        self.assertEqual(
-            self._report._get_date_from_src_filename(),
-            "2024.12.12"
-        )
+        self.assertEqual(self._report._get_date_from_src_filename(), "2024.12.12")
 
     def test_get_report_name(self) -> None:
         self._report._reports_dir = "test_dir"
         self._report._src_filename = "log_file.20221031.tar.gz"
         self.assertEqual(
-            self._report._get_report_name(),
-            "test_dir/report-2022.10.31.html"
+            self._report._get_report_name(), "test_dir/report-2022.10.31.html"
         )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

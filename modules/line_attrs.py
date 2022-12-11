@@ -7,6 +7,7 @@ class LineAttrs:
     """
     Строка лога преобразованная в объект по шаблону Config.template
     """
+
     remote_addr: str = r"[\d\.]+"
     remote_user: str = r".+"
     http_x_real_ip: str = r".+"
@@ -26,16 +27,17 @@ class LineAttrs:
 
     class Config:
         # Шаблон для парсинга логов
-        template: str = \
-            "^$remote_addr $remote_user $http_x_real_ip \\[$time_local\\] "\
-            "\"$type $request $proto\" $status $body_bytes_sent " \
-            "\"$http_referer\" \"$http_user_agent\" " \
-            "\"$http_x_forwarded_for\" \"$http_X_REQUEST_ID\" " \
-            "\"$http_X_RB_USER\" $request_time$"
+        template: str = (
+            "^$remote_addr $remote_user $http_x_real_ip \\[$time_local\\] "
+            '"$type $request $proto" $status $body_bytes_sent '
+            '"$http_referer" "$http_user_agent" '
+            '"$http_x_forwarded_for" "$http_X_REQUEST_ID" '
+            '"$http_X_RB_USER" $request_time$'
+        )
 
     @lru_cache
     def _get_template(self) -> str:
-        """ Формирование шаблона строки из атрибутов """
+        """Формирование шаблона строки из атрибутов"""
         template: str = self.Config.template
         for attr in self.__annotations__:
             template = template.replace(
