@@ -87,6 +87,7 @@ class Report:
         items: dict[str, ReportItem] = {}
         if count_gt:
             items = {
+                # fmt: off
                 key: item
                 for key, item in self._items.items()
                 if item.count > count_gt
